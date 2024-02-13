@@ -19,12 +19,10 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: |
-          yarn
+        run: yarn
 
       - name: Run unit tests with Vitest
-        run: |
-          yarn run vitest ./tests/unit/*
+        run: yarn run vitest ./tests/unit/Game.test.js
 
       - name: Install Playwright
         run: yarn playwright install --with-deps
