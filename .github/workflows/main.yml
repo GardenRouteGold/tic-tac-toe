@@ -24,13 +24,13 @@ jobs:
 
       - name: Run unit tests with Vitest
         run: |
-          yarn run test
+          yarn run vitest
 
       - name: Install Playwright
         run: yarn playwright install --with-deps
 
       - name: Run end-to-end tests with Playwright (headless)
-        run: npx playwright test
+        run: yarn playwright test
 
   build-and-deploy:
     runs-on: ubuntu-latest
