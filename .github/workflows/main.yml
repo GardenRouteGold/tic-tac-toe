@@ -49,7 +49,7 @@ jobs:
         run: yarn playwright install --with-deps
 
       - name: Run end-to-end tests with Playwright (headless)
-        run: yarn playwright test --baseUrl ${{ needs.start-dev-server.outputs.server-url }}
+        run: yarn playwright test
 
   build-and-deploy:
     runs-on: ubuntu-latest
