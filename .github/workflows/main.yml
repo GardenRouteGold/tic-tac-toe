@@ -26,11 +26,14 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Run unit tests with Vitest
+        run: yarn run test
+
       - name: Install Playwright
         run: yarn playwright install --with-deps
 
       - name: Run end-to-end tests with Playwright (headless)
-        run: yarn playwright test
+        run: yarn run test-e2e
 
   build-and-deploy:
     environment:
