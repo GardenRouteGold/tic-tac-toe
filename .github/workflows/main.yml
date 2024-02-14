@@ -5,33 +5,14 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
-  start-dev-server:
-    runs-on: ubuntu-latest
-    outputs:
-      server-url: ${{ steps.start-server.outputs.server-url }}
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Start dev server
-        id: start-server
-        run: |
-          yarn run start &
-          echo "::set-output name=server-url::http://localhost:8080"
-
   test:
     runs-on: ubuntu-latest
-    needs: start-dev-server
 
     steps:
       - name: Checkout code
@@ -52,9 +33,11 @@ jobs:
         run: yarn playwright test
 
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: test
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -70,13 +53,15 @@ jobs:
       - name: Build
         run: yarn run build
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload dist directory
+          path: './dist'
+      
       - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.email "dan.vrens81@gmail.com"
-          git config --global user.name "Dan Van"
-          git checkout gh-pages || git checkout --orphan gh-pages
-          git rm -rf .
-          mv dist/* .
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-          git push -f origin gh-pages
+        id: deployment
+        uses: actions/deploy-pages@v4
