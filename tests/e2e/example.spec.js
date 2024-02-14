@@ -2,7 +2,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("has title", async ({ page }) => {
-  await page.goto("http://localhost:8080/");
+  await page.goto("http://127.0.0.1:8080/");
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/Tic Tac Toe/);
@@ -13,14 +13,14 @@ test.describe("Tic-Tac-Toe Game", () => {
   // Launch a browser instance before each test
   test.beforeEach(async ({ browser }) => {
     page = await browser.newPage();
-    await page.goto("http://localhost:8080"); // Assuming your game is hosted at http://localhost:8080
+    await page.goto("http://127.0.0.1:8080"); // Assuming your game is hosted at http://127.0.0.1:8080
   });
   // Close the browser instance after each test
   test.afterEach(async () => {
     await page.close();
   });
   test("Player X wins the game", async ({ page }) => {
-    await page.goto("http://localhost:8080"); // Assuming your game is hosted at http://localhost:8080
+    await page.goto("http://127.0.0.1:8080"); // Assuming your game is hosted at http://127.0.0.1:8080
 
     // Click on the game cells to simulate player interactions
     await page.locator(".game-cell").nth(0).click();
@@ -37,7 +37,7 @@ test.describe("Tic-Tac-Toe Game", () => {
     });
   });
   test("Player O wins the game", async ({ page }) => {
-    await page.goto("http://localhost:8080"); // Assuming your game is hosted at http://localhost:8080
+    await page.goto("http://127.0.0.1:8080"); // Assuming your game is hosted at http://127.0.0.1:8080
 
     // Click on the game cells to simulate player interactions
     await page.locator(".game-cell").nth(4).click();
@@ -55,7 +55,7 @@ test.describe("Tic-Tac-Toe Game", () => {
     });
   });
   test("Game ends in a tie", async ({ page }) => {
-    await page.goto("http://localhost:8080"); // Assuming your game is hosted at http://localhost:8080
+    await page.goto("http://127.0.0.1:8080"); // Assuming your game is hosted at http://127.0.0.1:8080
 
     // Click on the game cells to simulate player interactions
     await page.locator(".game-cell").nth(0).click();
@@ -76,7 +76,7 @@ test.describe("Tic-Tac-Toe Game", () => {
     });
   });
   test("Clicking the reset button updates the game state", async ({ page }) => {
-    await page.goto("http://localhost:8080"); // Assuming your game is hosted at http://localhost:8080
+    await page.goto("http://127.0.0.1:8080"); // Assuming your game is hosted at http://127.0.0.1:8080
 
     // Click on the game cells to simulate player interactions
     await page.locator(".game-cell").nth(0).click();
