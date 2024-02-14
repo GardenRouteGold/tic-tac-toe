@@ -30,6 +30,16 @@ yarn run test-e2e
 ```
 docker build -t tic-tac-toe-game .
 docker run -p 3000:3000 -p 9323:9323 -p 8080:8080 tic-tac-toe-game
+# get the cotainer ID
+docker ps | grep tic-tac-toe
+# use the cotainer ID to open up a Shell in the container
+# EXAMPLE, replace "b9884a257bc0" with your own container ID
+docker exec -it b9884a257bc0 /bin/bash
+# once the shell is open you should see
+# root@b9884a257bc0:/usr/src/app#
+cd /usr/src/app;
+yarn run test;
+yarn run test-e2e;
 ```
 
 ## Contributors
