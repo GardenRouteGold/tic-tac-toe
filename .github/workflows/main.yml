@@ -27,7 +27,7 @@ jobs:
         run: yarn install
 
       - name: Run unit tests with Vitest
-        run: yarn run test
+        run: yarn run test tests/unit
 
       - name: Install Playwright
         run: yarn playwright install --with-deps
