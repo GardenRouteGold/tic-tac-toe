@@ -6,12 +6,47 @@
     <title>Tic Tac Toe</title>
     <style>
         html {
-            background-color: darkslategray;
         }
         .game td {
             min-width: 105px;
             height: 105px;
             transition: all 0.3s ease-in-out;
+        }
+        .game-container {
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+        }
+        
+        .controls {
+            display: flex;
+            align-content: space-between;
+            /* align-items: center; */
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+            background-color: transparent;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .board {
+            justify-self: center;
+            align-self: flex-end;
+            align-items: center;
         }
         svg {
             transition: all 3s ease-in-out; 
@@ -42,6 +77,12 @@
             width: initial;
             opacity: 1;
         }
+        @media only screen and (min-width: 960px) {
+            .controls {
+                max-width: 80%; /* Limit the width of controls to 80% */
+                margin: 0 auto; /* Center the controls horizontally */
+            }
+        }
 
     </style>
     <link rel="stylesheet" href="/style.css">
@@ -49,13 +90,12 @@
 </head>
 <body>
     <section class="container">
-        <h1>Tic Tac Toe</h1>
+        <div class="controls">
+            <h1>Tic Tac Toe</h1>
+            <button id="reset" type="button" aria-label="Reset" onclick="window.Game.onResetClick()">Reset</button>
+        </div>
         <article class="game-container">
             <div id="board" class="board"></div>
-            <buttond id="reset" type="button" aria-label="Reset" onclick="window.Game.onResetClick()">Reset</button>
-        </article>
-        <article class="controls">
-            
         </article>
         <article class="player-container"></article>
     </section>

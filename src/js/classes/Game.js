@@ -110,9 +110,7 @@ export class Game {
     if (el.nodeName == "svg") {
       el = el.parentNode;
     }
-    console.log({ el });
     if (el.getAttribute("data-val") !== "false") {
-      // Should never fire but here just in case
       console.warn("already clicked this one");
       return;
     }
@@ -222,8 +220,6 @@ export class Game {
   checkForTie() {
     // Flatten the game state array to check if all cells are filled
     const flattenedState = this.state.flat();
-    console.log(this.state);
-    console.log(this.state.flat());
     // Check if any cell is empty
     if (flattenedState.includes(false)) {
       // There are still empty cells, so the game is not tied
