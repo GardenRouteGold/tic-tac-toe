@@ -18,6 +18,7 @@
   },
   "scripts": {
     "test": "vitest",
+    "test-e2e": "playwright test",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development --open"
   }
