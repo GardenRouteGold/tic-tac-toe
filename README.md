@@ -14,7 +14,7 @@ yarn start
 
 ```BASH
 yarn
-yarn run test
+yarn run test tests/unit
 ```
 
 ## Running E2E Tests
