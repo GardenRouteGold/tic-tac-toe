@@ -38,7 +38,7 @@ docker exec -it b9884a257bc0 /bin/bash
 # once the shell is open you should see
 # root@b9884a257bc0:/usr/src/app#
 cd /usr/src/app;
-yarn run test;
+yarn run test tests/unit;
 yarn run test-e2e;
 ```
 
